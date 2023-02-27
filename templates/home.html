@@ -1,9 +1,178 @@
 <!DOCTYPE html>
-<h1>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ML API</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 
-Hello world
+    <style>
+        .login {
 
-</h1>
+          
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      padding: 40px;
+      background: #796f6f;
+         
+        }
+
+        input[type=text] {
+  padding:10px;
+  margin:10px 0;
+}
+
+.border-bottom-input {
+  border:20px; 
+  border-bottom:1px solid #eee; 
+}
+
+input[type=text] {
+  padding:10px;
+  border:0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+.rounded-input {
+  padding:10px;
+  border-radius:10px;
+}
+
+input {
+  width:100%;
+}
+
+label[for=type] {
+  padding:10px;
+  border:0;
+  margin:10px 0;
+  
+}
+
+.rounded-label {
+  padding:10px;
+  border-radius:10px;
+}
+
+label {
+  width:100%;
+}
+
+        select {
+  width: 100%;
+  padding:10px;
+  border-radius:10px;
+  margin:10px 0;
+}
+
+.border-bottom-level {
+  border:20px; 
+  border-bottom:1px solid #eee; 
+}
+
+button {
+
+/* remove default behavior */
+appearance:none;
+-webkit-appearance:none;
+
+/* usual styles */
+padding:10px;
+border:none;
+background-color:#3F51B5;
+color:#fff;
+font-weight:600;
+border-radius:5px;
+width:100%;
+
+}
 
 
+.login {
+  background-color: #fafafa;
+  border:0;
+  box-shadow:0 0 4px rgba(0,0,0,0.3);
+  transition: .3s box-shadow;
+}
+.login {
+  box-shadow:0 0 4px rgba(0,0,0,0.5);
+}
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  position: absolute;
+    top: 3%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+      </style>
+
+  </head>
+  <body>
+    <div class="login">
+      <h1>Toronto House Price Prediction</h1>
+      <!-- Main Input For Receiving Query to our ML -->
+      <form action="{{ url_for('predict') }}" method="post">
+        <input type="text" name="bathrooms" placeholder="bathrooms" required="required" /><br>
+        <input type="text" name="parking" placeholder="parking" required="required" /><br>
+        <input type="text" name="new_bedroom" placeholder="new_bedroom" required="required" /><br>
+        <input type="text" name="new_sqft" placeholder="new_sqft" required="required" /><br>
+        <input type="text" name="Latitude" placeholder="Latitude" required="required" /><br>
+        <input type="text" name="Longitude" placeholder="Longitude" required="required" /><br>
+        <label for="type">type:</label>
+        <select name="type" id="type" required="required">
+          <option value="Att_Row_Twnhouse">Att_Row_Twnhouse</option>
+          <option value="CoOp_Apt">CoOp_Apt</option>
+          <option value="Co_Ownership_Apt">Co_Ownership_Apt</option>
+          <option value="Comm_Element_Condo">Comm_Element_Condo</option>
+          <option value="Condo_Apt">Condo_Apt</option>
+          <option value="Condo_Townhouse">Condo_Townhouse</option>
+          <option value="Det_Condo">Det_Condo</option>
+          <option value="Detached">Detached</option>
+          <option value="Duplex">Duplex</option>
+          <option value="Fourplex">Fourplex</option>
+          <option value="Leasehold_Condo">Leasehold_Condo</option>
+          <option value="Multiplex">Multiplex</option>
+          <option value="Semi_Detached">Semi_Detached</option>
+          <option value="Triplex">Triplex</option>
+        </select><br>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+      </form>
+      <br><br>
+    </div>
+
+    <div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>{{ prediction_text }}</strong>  
+</div>
+<footer style="background-color: #f5f5f5; padding: 20px;">
+  <div style="display: flex; justify-content: center;">
+    <p style="font-size: 14px; color: #888;">&copy; 2023 Toronto House Price Prediction</p>
+  </div>
+</footer>
+  </body>
 </html>
