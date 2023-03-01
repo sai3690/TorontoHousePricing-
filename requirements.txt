@@ -1,5 +1,10 @@
 Flask
 sklearn
+seaborn
 pandas
 numpy
 matplotlib
+geopy
+nltk
+tqdm
+gunicorn

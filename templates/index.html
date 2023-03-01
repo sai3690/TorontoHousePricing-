@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<style>
+
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: hwb(154 90% 7%);
+    font: normal 20px Verdana, Arial, sans-serif;
+   
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 35%;
+    height: auto;
+    margin-bottom: 10px;
+    
+    
+}
+
+.button-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .predict-button {
+            font-size: 24px;
+            padding: 20px 40px;
+            margin-right: 20px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .code-button {
+            font-size: 24px;
+            padding: 20px 40px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f44336;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px; /* add margin between buttons */
+        }
+
+        .button:hover {
+            background-color: #da190b;
+        }
+
+        .full-width-button {
+            display: block;
+            width: 15%;
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px 40px;
+            border-radius: 5px;
+            font: normal 20px Verdana, Arial, sans-serif;
+        }
+  </style>
+  <head>
+    <title>Home Page</title>
+    
+  </head>
+  <body>
+    <div class="container">
+        <a href="https://github.com/sai3690"><img src="https://saisamarpan.s3.amazonaws.com/My+project-1+(2).png" alt="Image"></a>
+      <div class="button-container">
+        <a href="{{ url_for('home') }}" class="predict-button">Predict</a>
+        <a href="https://github.com/sai3690/TorontoHousePricing-" class="code-button">code</a>
+      </div>
+
+      <a href="{{ url_for('homebeta') }}" class="button full-width-button">Try Beta..!</a>
+    </div>
+  </body>
+</html>

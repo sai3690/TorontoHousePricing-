@@ -2,29 +2,33 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>ML API</title>
-    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-
+    <title>Predict Price</title>
+   
     <style>
-        .login {
-
-          
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+body {
+  background-image: "/Users/saisahu/Desktop/deployment/TorontoHousePricing-/Toronto.jpg";
+  
+}
+        
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+   .login {    
+      position: relative;
       width: 400px;
       padding: 40px;
       background: #796f6f;
+      font: normal 20px Verdana, Arial, sans-serif;
          
         }
 
-        input[type=text] {
+  input[type=text] {
   padding:10px;
   margin:10px 0;
+  font: normal 20px Verdana, Arial, sans-serif;
 }
 
 .border-bottom-input {
@@ -61,6 +65,7 @@ label[for=type] {
 
 label {
   width:100%;
+
 }
 
         select {
@@ -68,6 +73,8 @@ label {
   padding:10px;
   border-radius:10px;
   margin:10px 0;
+
+  font: normal 20px Verdana, Arial, sans-serif;
 }
 
 .border-bottom-level {
@@ -84,11 +91,13 @@ appearance:none;
 /* usual styles */
 padding:10px;
 border:none;
-background-color:#3F51B5;
+background-color:#1abc9c;
 color:#fff;
 font-weight:600;
 border-radius:5px;
 width:100%;
+
+font: normal 20px Verdana, Arial, sans-serif;
 
 }
 
@@ -96,22 +105,27 @@ width:100%;
 .login {
   background-color: #fafafa;
   border:0;
-  box-shadow:0 0 4px rgba(0,0,0,0.3);
+  display: inline-block;
+  
+    
   transition: .3s box-shadow;
-}
-.login {
-  box-shadow:0 0 4px rgba(0,0,0,0.5);
+  margin-left: 25%;
+    margin-right:25%;
+    width: 50%;
 }
 
-.alert {
+
+
+.my-alert {
   padding: 20px;
   background-color: #f44336;
   color: white;
   position: absolute;
-    top: 3%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
+  top: 3%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  font: normal 20px Verdana, Arial, sans-serif;
+  
 }
 
 .closebtn {
@@ -123,26 +137,84 @@ width:100%;
   line-height: 20px;
   cursor: pointer;
   transition: 0.3s;
+  display: none; /* hide close button initially */
+}
+
+.my-alert:hover .closebtn {
+  display: block; /* display close button on hover */
 }
 
 .closebtn:hover {
   color: black;
 }
 
+.site-footer {
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  position:relative;
+  bottom: 0;
+  width: 100%;
+  
+}
+
+#social-wrapper {
+	text-align: center;
+  padding-bottom: 2.5rem; 
+}
+
+/*Social Media Icons*/
+.social-wrapper {
+	text-align: center;
+}
+
+.social-wrapper ul li {
+	display: inline;
+	margin: 0 5px;
+}
+
+
+.git-icon,
+.linkedin-icon,
+.foursquare-icon{
+	margin-top: 3.625em;
+	width: 40px;
+	height: 40px;
+	opacity: .6;
+	filter: alpha(opacity=60); 
+  border-radius: 25px;
+}
+
+
+.git-icon:hover,
+.linkedin-icon:hover,
+.foursquare-icon:hover {
+	opacity: 1.0;
+	filter: alpha(opacity=100);
+}
+
+.footer-nav p {
+	text-align: center;
+}
+
       </style>
 
   </head>
   <body>
+   
     <div class="login">
-      <h1>Toronto House Price Prediction</h1>
+      <a href="{{ url_for('index') }}"><h1>Toronto House Price Prediction</h1></a>
       <!-- Main Input For Receiving Query to our ML -->
       <form action="{{ url_for('predict') }}" method="post">
         <input type="text" name="bathrooms" placeholder="bathrooms" required="required" /><br>
         <input type="text" name="parking" placeholder="parking" required="required" /><br>
         <input type="text" name="new_bedroom" placeholder="new_bedroom" required="required" /><br>
         <input type="text" name="new_sqft" placeholder="new_sqft" required="required" /><br>
-        <input type="text" name="Latitude" placeholder="Latitude" required="required" /><br>
-        <input type="text" name="Longitude" placeholder="Longitude" required="required" /><br>
+    <!--     <input type="text" name="address" placeholder="address" required="required" /><br>-->
+        
+        <input type="text" name="Latitude" placeholder="Provide GTA based latitude for better prediction" required="required" /><br>
+        <input type="text" name="Longitude" placeholder="Provide GTA based longitude for better prediction" required="required" /><br>
         <label for="type">type:</label>
         <select name="type" id="type" required="required">
           <option value="Att_Row_Twnhouse">Att_Row_Twnhouse</option>
@@ -165,14 +237,33 @@ width:100%;
       <br><br>
     </div>
 
-    <div class="alert">
-  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-  <strong>{{ prediction_text }}</strong>  
-</div>
-<footer style="background-color: #f5f5f5; padding: 20px;">
-  <div style="display: flex; justify-content: center;">
-    <p style="font-size: 14px; color: #888;">&copy; 2023 Toronto House Price Prediction</p>
-  </div>
-</footer>
+    <div class="my-alert">
+      <strong>{{ prediction_text }}</strong>
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    </div>
+
+
+
+
   </body>
+
+  <footer id="colophon" class="site-footer" role="contentinfo">
+    <div class="social-wrapper">
+      <ul>
+        <li>
+          <a href="https://github.com/sai3690" target="_blank">
+            <img src="https://icons.iconarchive.com/icons/bokehlicia/captiva/256/web-github-icon.png" alt="git Logo" class="git-icon"></a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/sai-samarpan-sahu/" target="_blank">
+            <img src="https://icons.iconarchive.com/icons/limav/flat-gradient-social/256/Linkedin-icon.png" alt="Linkedin Logo" class="linkedin-icon"></a>
+        </li>
+      </ul>
+    </div>
+  
+    <nav class="footer-nav" role="navigation">
+      <p>Copyright &copy; 2023-
+        <?php echo date("Y"); ?> Sai Samarpan. All rights reserved.</p>
+    </nav>
+  </footer>
 </html>
