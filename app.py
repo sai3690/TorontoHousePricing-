@@ -27,6 +27,7 @@ def home():
     return render_template('home.html')
 
 
+'''
 
 @app.route('/predict_api',methods=['POST'])
 def predict_api():
@@ -38,6 +39,9 @@ def predict_api():
     new_data = np.array(list(data.values())).reshape(1,-1)
     output = RandomForestmodel.predict(new_data)
     return jsonify(output[0])
+    
+    '''
+
 
 
 
@@ -59,6 +63,8 @@ def predictbeta():
    
    '''Latitude = request.form["Latitude"]
    Longitude = request.form["Longitude"]'''
+
+   
    type=request.form['type']
    
 
