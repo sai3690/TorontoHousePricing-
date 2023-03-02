@@ -36,6 +36,7 @@ geographiclib==2.0
 geojson==2.5.0
 geopy==2.3.0
 gmaps==0.9.0
+gunicorn
 homebrew==0.2.5
 idna==3.4
 ipykernel==6.17.0
