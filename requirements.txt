@@ -26,6 +26,7 @@ jedi==0.18.1
 Jinja2==3.1.2
 jmespath==1.0.1
 jsonschema==4.17.0
+
 jupyter-contrib-core==0.4.0
 jupyter-contrib-nbextensions==0.5.1
 jupyter-highlight-selected-word==0.2.0
