@@ -545,7 +545,6 @@ def predictbeta():
    return render_template("homebeta.html",prediction_text="The House price prediction is {}".format(int(output)))
 
 
-
 if __name__=="__main__":
     app.run(debug=True)
 
