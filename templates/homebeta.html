@@ -207,7 +207,7 @@ font: normal 20px Verdana, Arial, sans-serif;
     <div class="login">
       <a href="{{ url_for('index') }}"><h1>Toronto House Price Prediction</h1></a>
       <!-- Main Input For Receiving Query to our ML -->
-      <form action="{{ url_for('predict') }}" method="post">
+      <form action="{{ url_for('predictbeta') }}" method="post">
         <input type="text" name="bathrooms" placeholder="bathrooms" required="required" /><br>
         <input type="text" name="parking" placeholder="parking" required="required" /><br>
         <input type="text" name="new_bedroom" placeholder="new_bedroom" required="required" /><br>
